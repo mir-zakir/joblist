@@ -1,24 +1,21 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import JobBrief from './JobBrief';
+import jobs from './jobs.json';
 
 function App() {
+  //console.log(job.map(job=>job.name));
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    jobs.map(job=>{
+      return (
+        <JobBrief 
+          title={job.name} 
+          location={job.location.city +', '+ job.location.country}
+          image={job.logo}
+          salary={job.salary}
+          detail={job.description}/>
+    );
+  })
   );
 }
 
